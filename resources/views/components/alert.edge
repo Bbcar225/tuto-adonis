@@ -1,0 +1,9 @@
+@if(flashMessages.get('type-alert'))
+<div class="alert alert-{{  flashMessages.get('type-alert') }} text-center">
+  <p>
+    <strong>
+      {{ flashMessages.get('alert-message') }}
+    </strong>
+  </p>
+</div>
+@endif

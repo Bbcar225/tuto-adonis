@@ -1,0 +1,52 @@
+<form action="{{ route }}" method="POST" enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-6">
+      @!component('components/form/input', {
+      input_type: 'input',
+      name : 'title',
+      label : 'Titre',
+      value : post.title
+      })
+    </div>
+
+    <div class="col-md-6">
+      @!component('components/form/input', {
+      input_type: 'select',
+      name : 'category_id',
+      label : 'Catégorie',
+      value : post.category_id,
+      options : categories.reduce((acc, c) => ({...acc, [c.id]: c.name}), {})
+      })
+    </div>
+  </div>
+
+  @!component('components/form/input', {
+  input_type: 'textarea',
+  name : 'content',
+  label : 'Contenu',
+  value : post.content
+  })
+
+  <div class="d-flex">
+    @if(post.thumbnail)
+    <div class="me-3">
+      <img src="/uploads/{{ post.thumbnail }}" width="150" height="150" style="object-fit: cover" class="img-thumbnail">
+    </div>
+    @endif
+
+    @!component('components/form/input', {
+    input_type: 'file',
+    name : 'thumbnail',
+    label : 'Miniature',
+    })
+  </div>
+
+  <div class="form-group my-3">
+    <input {{ post.online ? 'checked' : '' }} type="checkbox" name="online" class="form-check-input" id="online">
+    <label for="online" class="form-check-lable">En ligne ?</label>
+  </div>
+
+  <div class="form-group my-3">
+    <button class="btn btn-primary">Sauvegardé</button>
+  </div>
+</form>

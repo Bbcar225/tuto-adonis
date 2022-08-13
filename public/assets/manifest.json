@@ -1,0 +1,4 @@
+{
+  "bootstrap-css": "http://127.0.0.1:3333/assets/bootstrap/css/bootstrap.min.css",
+  "bootstrap-js" : "http://127.0.0.1:3333/assets/bootstrap/js/bootstrap.bundle.min.js"
+}

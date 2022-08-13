@@ -1,0 +1,13 @@
+@layout('layout/app')
+
+@section('body')
+
+<h2>Modifié l'article {{ post.title }}</h2>
+
+@!component('blog/form', {
+  route     : route('posts.update', {id: post.id}),
+  post      : post,
+  categories: categories
+})
+
+@endsection

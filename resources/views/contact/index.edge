@@ -1,0 +1,49 @@
+@layout('layout/app')
+
+@section('body')
+<div class="card text-center my-5">
+  <div class="card-header">
+    <h4>Conctactez-moi</h4>
+  </div>
+  <form action="{{ route('contact.store') }}" method="POST">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          @!component('components/form/input', {
+          input_type: 'input',
+          label: 'Sujet',
+          name: 'sujet'
+          })
+        </div>
+
+        <div class="col-md-6">
+          @!component('components/form/input', {
+          input_type: 'input',
+          label: 'Nom et prénoms',
+          name: 'full_name'
+          })
+        </div>
+
+        <div class="col-md-6">
+          @!component('components/form/input', {
+          input_type: 'input',
+          label: 'Adresse Email',
+          name: 'email'
+          })
+        </div>
+
+        <div class="col-md-12">
+          @!component('components/form/input', {
+          input_type: 'textarea',
+          label: 'Message',
+          name: 'message'
+          })
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary w-50">Envoyer le message</button>
+    </div>
+  </form>
+</div>
+@endsection

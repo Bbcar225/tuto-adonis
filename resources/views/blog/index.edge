@@ -1,0 +1,51 @@
+@layout('layout/app')
+
+@section('body')
+<h2>Articles</h2>
+
+<section>
+  <p>
+    <a href="{{ route('posts.create') }}" class="btn btn-primary">Créer un article</a>
+  </p>
+</section>
+
+<main>
+  <ul class="list-group mb-3">
+    @each(post in posts)
+    <li class="list-group-item">
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="{{ route('posts.show', {id: post.id}) }}">
+          {{ post.title }}
+        </a>
+
+        <form action="{{ route('posts.destroy', {id: post.id}) }}?_method=DELETE" method="POST">
+          <button class="btn btn-danger btn-sm">Supprimer</button>
+        </form>
+      </div>
+    </li>
+    @else
+    <li class="list-group-item">
+      <h4>Aucun post pour le moment</h4>
+    </li>
+    @endeach
+  </ul>
+</main>
+
+<nav>
+  <ul class="pagination justify-content-center">
+    <li class="page-item {{ posts.getPreviousPageUrl() ?? 'disabled' }}">
+      <a class="page-link" href="{{ posts.getPreviousPageUrl() }}">Précédent</a>
+    </li>
+    @each(anchor in posts.getUrlsForRange(1, posts.lastPage))
+    <li class="page-item">
+      <a href="{{ anchor.url }}" class="page-link {{ anchor.isActive ? 'active' : '' }}" disabled>{{ anchor.page
+        }}</a>
+    </li>
+    @end
+    <li class="page-item {{ posts.getNextPageUrl() ?? 'disabled' }}">
+      <a class="page-link" href="{{ posts.getNextPageUrl() || '' }}"">Suivant</a>
+    </li>
+  </ul>
+</nav>
+
+@endsection

@@ -1,0 +1,33 @@
+@layout('layout/app')
+
+@section('body')
+<div class="card text-center my-5">
+  <div class="card-header">
+    <h4>Se connecter</h4>
+  </div>
+  <form action="{{ route('auth.store') }}" method="POST">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          @!component('components/form/input', {
+            input_type: 'input',
+            label: 'Email',
+            name: 'email'
+          })
+        </div>
+
+        <div class="col-md-6">
+          @!component('components/form/input', {
+            input_type: 'password',
+            label: 'Mot de passe',
+            name: 'password'
+          })
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary">Se connecter</button>
+    </div>
+  </form>
+</div>
+@endsection

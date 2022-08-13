@@ -1,0 +1,13 @@
+@layout('layout/app')
+
+@section('body')
+
+<h2>Créer un nouveau article</h2>
+
+@!component('blog/form', {
+  route     : route('posts.store'),
+  post      : post,
+  categories: categories
+})
+
+@endsection

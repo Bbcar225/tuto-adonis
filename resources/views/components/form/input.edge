@@ -1,0 +1,39 @@
+<div class="form-group my-3">
+  <label for="{{ name }}">{{ label }}</label>
+
+  @if(input_type == 'textarea')
+  <textarea name="{{ name }}" id="{{ name }}"
+    class="{{ flashMessages.has(`errors.${name}`) ? 'is-invalid' : '' }} form-control {{ class_name }}">{{ flashMessages.get(name) || value || ''  }}</textarea>
+
+  @elseif(input_type == 'input')
+  <input type="text" name="{{ name }}" value="{{ flashMessages.get(name) || value || ''  }}"
+    class="{{ flashMessages.has(`errors.${name}`) ? 'is-invalid' : '' }} form-control {{ class_name ?? null }}">
+
+  @elseif(input_type == 'select')
+  <select name="{{ name }}" id="{{ name }}"
+    class="{{ flashMessages.has(`errors.${name}`) ? 'is-invalid' : '' }} form-control">
+    <option value=""></option>
+    @each(key in Object.keys(options))
+    <option value="{{ key }}" {{ flashMessages.get(name) || value == key ? 'selected' : '' }}>
+      {{ options[key] }}
+    </option>
+    @endeach
+  </select>
+
+  @elseif(input_type == 'password')
+  <input type="password" name="{{ name }}" class="form-control {{ class_name ?? null }}">
+
+  @elseif(input_type == 'file')
+  <input type="file" name="{{ name }}" id="{{ name }}" class="form-control {{ class_name ?? null }}">
+
+  @else
+  <p class="text-danger">Input inconnu ou incorrect</p>
+
+  @endif
+
+  @if(flashMessages.has(`errors.${name}`))
+  <div class="text-danger">
+    {{ flashMessages.get(`errors.${name}`) }}
+  </div>
+  @endif
+</div>
