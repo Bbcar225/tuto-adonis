@@ -39,6 +39,10 @@ Route.group(() => {
   Route.get('login', 'LoginController.index').as('auth.index')
 
   Route.post('login', 'LoginController.store').as('auth.store')
+
+  Route.get('register', 'RegistersController.index').as('register.index')
+
+  Route.post('register', 'RegistersController.store').as('register.store')
 }).middleware(['guest'])
 
 Route.group(() => {
