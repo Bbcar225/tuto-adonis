@@ -29,16 +29,11 @@ export default class RegistersController
       })
     })
 
-    const user = await User.create({
+    await User.create({
       full_name: data.noms,
       email: data.email,
       password: data.password
     })
-
-    if (user)
-    {
-      await auth.use('web').attempt(data.email, data.password)
-    }
 
     session.flash({
       'type-alert': 'success',
