@@ -9,7 +9,7 @@ export default class RegistersController
     return view.render('register/index')
   }
 
-  async store({ request, response, session, auth }: HttpContextContract)
+  async store({ request, response, session }: HttpContextContract)
   {
     const data = await request.validate({
       schema: schema.create({
