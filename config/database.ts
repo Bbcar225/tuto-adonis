@@ -56,7 +56,7 @@ const databaseConfig: DatabaseConfig = {
         port: Env.get('DB_PORT'),
         user: Env.get('DB_USERNAME'),
         password: Env.get('DB_PASSWORD', ''),
-        database: Env.get('DB_USERNAME'),
+        database: Env.get('DB_DATABASE'),
         ssl: {
           rejectUnauthorized: false,
         },
