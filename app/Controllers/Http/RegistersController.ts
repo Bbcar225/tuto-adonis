@@ -40,6 +40,6 @@ export default class RegistersController
       'alert-message': "Inscription validée !!!"
     })
 
-    return response.redirect().toRoute('home')
+    return response.redirect().toRoute('auth.index')
   }
 }
