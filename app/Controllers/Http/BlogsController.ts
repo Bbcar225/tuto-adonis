@@ -10,6 +10,8 @@ export default class BlogsController
 {
   async index ({ view, request } : HttpContextContract)
   {
+    console.log(request.url);
+
     const page = request.input('page', 1)
 
     const posts = await Database.from(Post.table).orderBy('id', 'desc').paginate(page, 4)
