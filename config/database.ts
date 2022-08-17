@@ -52,12 +52,19 @@ const databaseConfig: DatabaseConfig = {
     pg: {
       client: 'pg',
       connection: {
-        // ....
-        ssl: {
-          rejectUnauthorized: false
-        }
-      }
+        host: Env.get('DB_HOST'),
+        port: Env.get('DB_PORT'),
+        user: Env.get('DB_USERNAME'),
+        password: Env.get('DB_PASSWORD', ''),
+        database: Env.get('DB_USERNAME'),
+      },
+      migrations: {
+        naturalSort: true,
+      },
+      healthCheck: false,
+      debug: false,
     }
+
 
 
   }
